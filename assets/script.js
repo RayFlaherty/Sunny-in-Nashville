@@ -1,17 +1,8 @@
+var requestUrl="api.openweathermap.org/data/2.5/weather?q="+ city + "&appid=" +APIkey;
+var APIkey="78f98fdd8c2f3020975fd2b66a14d37d";
+var city="";
 
-fetch("https://us-zip-code-information.p.rapidapi.com/?zipcode=30043", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "us-zip-code-information.p.rapidapi.com",
-		"x-rapidapi-key": "ec4cfd55ddmshf228a755d18ec45p157fafjsn7e5d9480e268"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
+fetch(requestUrl)
 
 citySearch.onclick=function(){
 
