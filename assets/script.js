@@ -170,8 +170,10 @@ button.onclick= function cityLookUp() {
             })
         }
 
-        console.log('click')
-        //const cityArray = JSON.parse(localStorage.getItem('city')) || []
+        console.log('click');
+
+        
+        
 
         if(cityArray.length > 0) {
             cityArray.map(currentCity => {
@@ -184,20 +186,15 @@ button.onclick= function cityLookUp() {
         //   button.addEventListener("click", function(event) {
         //     event.preventDefault();
             
-            // create user object from submission
-            // var user = {
-            //   firstName: firstNameInput.value.trim(),
-            //   lastName: lastNameInput.value.trim(),
-            //   email: emailInput.value.trim(),
-            //   password: passwordInput.value.trim()
-            // };
+        
           
             cityArray.push(currentCity)
           
-            // const pEl = document.createElement('button')
-            // pEl.textContent = user.firstName
-            // usersDiv.appendChild(pEl)
-          
+            const buttonEl = document.createElement('button')
+            buttonEl.textContent = currentCity
+            quickLinksEl.appendChild(buttonEl)
+
+            localStorage.removeItem("cities",JSON.stringify(cityArray))
             // set new submission to local storage 
             localStorage.setItem("cities", JSON.stringify(cityArray));
 
