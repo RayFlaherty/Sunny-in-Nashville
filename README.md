@@ -9,4 +9,8 @@ It also saves the search history in local storage and shows the accumulated data
 
 Simply enter a city name (any city worldwide) into the search bar and press submit. And you're on your way!
 
-[!image]()
+![image](https://github.com/RayFlaherty/Sunny-in-Nashville/blob/66622d9e022946198f511008c01281ce231f7de7/assets/images/Weather%20Dashboard.PNG)
+
+
+
+
