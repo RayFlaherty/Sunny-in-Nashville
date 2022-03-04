@@ -2,9 +2,7 @@ const button= document.getElementById("citySearch");
 const selectedCityEl= document.getElementById("selectedCity");
 const quickLinksEl=document.getElementById("quickLinks");
 const geoApi= '4f8c824ff4b607b560ffd96a74610907'
-let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-
-console.log(searchHistory);
+const cityArray = JSON.parse(localStorage.getItem('city')) || []
 //current forecast array
 const temperatureEl= document.getElementById('temperature');
 const humidityEl= document.getElementById('humidity');
@@ -62,8 +60,7 @@ button.onclick= function cityLookUp() {
                 var lon = data[0].lon
                 // console.log(lat)
                 // console.log(lon)
-                
-
+                             
                 var currentWeather = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=daily&appid="+geoApi;
                 fetch(currentWeather)
                     .then(function(response){
@@ -164,7 +161,7 @@ button.onclick= function cityLookUp() {
                                 humidityFiveEl.innerHTML= "Humidity: " + humidityFive + "%"
                                 dayFivePicEl.setAttribute("src","https://openweathermap.org/img/wn/" + weatherPicFive + "@2x.png");
                             })
-                            setQuickLink();  
+
                         }
                     })          
                             })
@@ -172,25 +169,60 @@ button.onclick= function cityLookUp() {
                     })
             })
         }
-    }
-)}  
+
+        console.log('click')
+        //const cityArray = JSON.parse(localStorage.getItem('city')) || []
+
+        if(cityArray.length > 0) {
+            cityArray.map(currentCity => {
+              const buttonEl = document.createElement('button')
+              buttonEl.textContent = currentCity
+              quickLinks.appendChild(buttonEl)
+            })
+          }
+          
+        //   button.addEventListener("click", function(event) {
+        //     event.preventDefault();
+            
+            // create user object from submission
+            // var user = {
+            //   firstName: firstNameInput.value.trim(),
+            //   lastName: lastNameInput.value.trim(),
+            //   email: emailInput.value.trim(),
+            //   password: passwordInput.value.trim()
+            // };
+          
+            cityArray.push(currentCity)
+          
+            // const pEl = document.createElement('button')
+            // pEl.textContent = user.firstName
+            // usersDiv.appendChild(pEl)
+          
+            // set new submission to local storage 
+            localStorage.setItem("cities", JSON.stringify(cityArray));
+
+    },
+
+    // quickLinksEl.button= cityLookUp()
+
+
+
+
+  
+    
+)
+}  
 
 function k2f(K) {
     return Math.floor((K - 273.15) *1.8 +32);
 }
 
-function setQuickLink() {
-    quickLinksEl.innerHTML = "";
-    for (let i=0; i<searchHistory.length; i++) {
-        const linkItem = document.createElement("input");
-        linkItem.setAttribute("type","text");
-        linkItem.setAttribute("readonly",true);
-        linkItem.setAttribute("class", "form-control d-block bg-white");
-        linkItem.setAttribute("value", searchHistory[i]);
-        linkItem.addEventListener("click",function() {
-            getWeather(linkItem.value);
-        })
-        quickLinksEl.append(linkItem);
-    }
-}
 
+
+
+
+//   cityArray.push(selectedCityEl),
+
+
+
+//     localStorage.setItem("cites", JSON.stringify(cityArray))
