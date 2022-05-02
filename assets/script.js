@@ -42,7 +42,7 @@ const humidityFiveEl = document.getElementById("humidityFive");
 const dayFivePicEl = document.getElementById("dayFivePic");
 
 button.onclick = function cityLookUp() {
-  var currentCity = (city.value || quickLinkValueEl.value)
+  var currentCity = (city.value)
   //console.log(currentCity)
   var queryURL =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
